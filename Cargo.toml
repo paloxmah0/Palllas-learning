@@ -6,4 +6,6 @@ edition = "2024"
 [dependencies]
 hex = "0.4.3"
 pallas = "0.35.0"
+pallas-wallet = "0.35.0"
+serde = "1.0.228"
 tokio = "1.51.1"

@@ -4,11 +4,12 @@ use pallas::network::facades::PeerClient;
 use pallas::network::miniprotocols::chainsync::{NextResponse};
 use pallas::network::miniprotocols::{Point};
 use hex::decode;
+use pallas::ledger::traverse::{block};
 
 
 pub async fn neting() {
 let mut peer = PeerClient::connect
-("relays-new.cardano-mainnet.iohk.io:3002", 764824073).await.unwrap();
+("https://cardano-preprod-v6.ogmios-m1.dmtr.host", 764824073).await.unwrap();
 let client =peer.chainsync();
 let known_point = Point::Specific(1654413,
      hex::decode("b0a1c8e5d9f1e8b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6").unwrap());
@@ -26,9 +27,6 @@ match next_response{
     NextResponse::RollBackward(_,point )=>
     println!("Received rollback: {:?}", point),
     NextResponse::Await=> println!("No new blocks, awaiting..."),
-
+    
 }
-
-
-
 }
